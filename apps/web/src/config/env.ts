@@ -7,5 +7,5 @@ function readEnv(name: string): string | undefined {
 }
 
 export const env = {
-  apiBaseUrl: readEnv('NEXT_PUBLIC_API_URL') ?? 'http://localhost:4000',
+  apiBaseUrl: readEnv('NEXT_PUBLIC_API_URL') ?? 'https://aqar-misr.nodeteam.site',
 } as const;

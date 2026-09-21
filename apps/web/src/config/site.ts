@@ -2,6 +2,14 @@
  * Static fallbacks for marketplace branding when the settings API is unavailable.
  * Runtime branding should come from GET /api/v1/settings via getPlatformSettings().
  */
+function readEnv(name: string): string | undefined {
+  const value = process.env[name];
+  if (!value || value.trim() === '') {
+    return undefined;
+  }
+  return value.trim();
+}
+
 export const siteConfig = {
   name: 'عقارات مصر',
   nameEn: 'Egypt Homes',
@@ -12,7 +20,7 @@ export const siteConfig = {
   language: 'ar',
   direction: 'rtl' as const,
   currency: 'EGP' as const,
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000',
+  url: readEnv('NEXT_PUBLIC_SITE_URL') ?? 'http://localhost:3000',
   defaultOgImage: '/og-default.png',
   contactEmail: 'hello@egypt-homes.example',
   support: {
